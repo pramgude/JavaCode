@@ -1,0 +1,7 @@
+D:\Poonam\WebApplication1\ssss\bin\Debug\ssss.exe.config
+D:\Poonam\WebApplication1\ssss\bin\Debug\ssss.exe
+D:\Poonam\WebApplication1\ssss\bin\Debug\ssss.pdb
+D:\Poonam\WebApplication1\ssss\obj\Debug\ssss.csprojResolveAssemblyReference.cache
+D:\Poonam\WebApplication1\ssss\obj\Debug\ssss.csproj.CoreCompileInputs.cache
+D:\Poonam\WebApplication1\ssss\obj\Debug\ssss.exe
+D:\Poonam\WebApplication1\ssss\obj\Debug\ssss.pdb

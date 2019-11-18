@@ -1,0 +1,305 @@
+SELECT
+    COALESCE(customer.custid, custtel.custid,custaddress.custid) AS custid,
+	IdType,
+    Name,
+    firstname,
+	maidenname,
+	telno,
+	Email,
+	CONCAT( cusaddr1, ',', cusaddr2,',',cusaddr3 ) AS address
+FROM customer
+FULL OUTER JOIN custtel
+ON customer.custid = custtel.custid
+Full OUTER JOIN custaddress
+ON customer.custid=custaddress.custid
+
+######(why use COALESCE?)#####
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+SELECT 
+	 c.custid
+	,c.name
+	,c.firstname
+	,c.maidenname
+	,c.IdType
+	,t.telno
+	,a.Email
+	,CONCAT( cusaddr1, ',', cusaddr2,',',cusaddr3 ) AS address 
+FROM customer c 
+INNER JOIN custtel t ON c.custid = t.custid 
+INNER JOIN custaddress a  ON a.custid = t.custid;
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+SELECT custid,AddressId,
+		CONCAT( cusaddr1, ',', cusaddr2,',',cusaddr3 ) AS address,'false' as billingAddress
+		FROM custaddress where custid=@custid
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+SELECT 
+			c.custid
+			,c.AvailableSpend
+			,ct.accttype
+		FROM customer c
+		INNER JOIN  custacct a ON c.custid = a.custid
+		INNER JOIN acct ct ON ct.acctno=a.acctno
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+As the message suggests, this error can easily be avoided by making sure that a local variable is defined first using the DECLARE statement before being used.
+
+In the first case described above, simply declare the local variables just before setting its value or returning its value as part of a SELECT statement:
+
+eg.
+1>
+DECLARE @FirstName	VARCHAR(50)
+SET @FirstName = 'Mickey'
+GO
+
+DECLARE @HighestScore	INT
+SELECT @HighestScore
+GO
+
+2>
+As for the second scenario, there are 2 ways of avoiding the error.  The first option is to remove the GO command between the 2 sets of scripts so that the local variable @DateFormat is valid and accessible on both scripts:
+
+DECLARE @DateFormat INT
+
+SET @DateFormat = 0
+WHILE @DateFormat < 15
+BEGIN
+    PRINT CONVERT(VARCHAR(30), GETDATE(), @DateFormat)
+    SET @DateFormat = @DateFormat + 1
+END
+
+SET @DateFormat = 100
+WHILE @DateFormat < 115
+BEGIN
+    PRINT CONVERT(VARCHAR(30), GETDATE(), @DateFormat)
+    SET @DateFormat = @DateFormat + 1
+END
+GO
+
+OR:
+The second option is to define the local variable @DateFormat again just after the GO command and just before it gets initialized and used:
+
+DECLARE @DateFormat INT
+
+SET @DateFormat = 0
+WHILE @DateFormat < 15
+BEGIN
+    PRINT CONVERT(VARCHAR(30), GETDATE(), @DateFormat)
+    SET @DateFormat = @DateFormat + 1
+END
+GO
+
+DECLARE @DateFormat INT
+
+SET @DateFormat = 100
+WHILE @DateFormat < 115
+BEGIN
+    PRINT CONVERT(VARCHAR(30), GETDATE(), @DateFormat)
+    SET @DateFormat = @DateFormat + 1
+END
+GO
+
+
+
+4>
+DECLARE @ColumnName		VARCHAR(100)
+SET @ColumnName = 'FirstName'
+
+EXECUTE ('SELECT ' + @ColumnName + ' FROM [dbo].[Customers]')
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+A variable is a named data object whose value can change during the stored procedure execution. We typically use the variables in stored procedures to hold the immediate results. These variables are local to the stored procedure. You must declare a variable before using it.
+
+Declaring variables
+To declare a variable inside a stored procedure, you use the DECLARE  statement as follows:
+
+1
+DECLARE variable_name datatype(size) DEFAULT default_value;
+Let’s examine the statement above in more detail:
+
+First, you specify the variable name after the DECLARE keyword. The variable name must follow the naming rules of MySQL table column names.
+Second, you specify the data type of the variable and its size. A variable can have any MySQL data types such as INT, VARCHAR , and DATETIME.
+Third, when you declare a variable, its initial value is NULL. You can assign the variable a default value using the DEFAULTkeyword.
+For example, we can declare a variable named total_sale with the data type INT and default value 0  as follows:
+
+1
+DECLARE total_sale INT DEFAULT 0;
+MySQL allows you to declare two or more variables that share the same data type using a single DECLARE statement as follows:
+
+1
+DECLARE x, y INT DEFAULT 0;
+In this example, we declared two integer variables  x and  y, and set their default values to zero.
+
+Assigning variables
+Once you declared a variable, you can start using it. To assign a variable another value, you use the SET statement, for example:
+
+1
+2
+DECLARE total_count INT DEFAULT 0;
+SET total_count = 10;
+
+
+
+
+
+
+If exceptions are not handled manually by using keywords try,throw,throws and catch, then its automatically handled by the default handler i.e.,the java run-time system. 
+try:-The block that has to be monitored for errors is put into this. 
+try 
+{ 
+//code to be monitored 
+} 
+catch:-When the exception is detected by try,its thrown to catch which handles it by figurin out the kinda exception it is. 
+catch(Exception_type exception_objectname) 
+{ 
+//handler 
+} 
+throw:-When the exception is thrown manually to catch,its used 
+throws:-Lists the type of exceptions that a method throws. 
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+The finally block must come after a try or catch block. The finally block will always be executed whether or not an exception is thrown. The finally block is generally used for cleaning-up code e.g. for disposing an unmanaged objects etc.
+
+Example: finally block
+static void Main(string[] args)
+{
+    int zero = 0;    
+    
+    try
+    {
+        int result = 5/zero;  // this will throw an exception       
+    }
+    catch(Exception ex)
+    {
+        Console.WriteLine("Inside catch block. Exception: {0}", ex.Message );
+    }
+    finally
+    {
+        Console.WriteLine("Inside finally block.");
+    }
+}
+Output:
+Inside catch block. Exception: Attempted to divide by zero.
+Inside finally
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+
+Hibernate Framework (version 3.x)
+
+1. Introduction
+
+What is ORM principle?
+
+Why ORM?
+
+ORM implementations
+
+2. Hibernate Architecture
+
+Introduction to Hibernate
+
+Hibernate Architecture
+
+What are Peristent classes?
+
+3. Hibernate CRUD
+
+Setting up Hibernate project
+
+Configuring all JARs and XML files
+
+Setting up connection to DB using Hibernate
+
+Performing basic CRUD operations using Hibernate API
+
+Object Identity; Generator type classes
+
+Using SQL with Hibernate
+
+Using HQL
+
+Using Criteria queries
+
+4. Mapping Collections and Associations
+
+To define sets, mas, lists in Hibernate
+
+Association Mappings: 1. One to one
+
+2 One to many
+
+3 Many to one
+
+4 Many to many
+
+5. Hibernate Caching
+
+What is caching?
+
+What are the types of caching in Hibernate?
+
+Explanation of various caching mechanisms in Hibernate
+
+6. Using Hibernate Annotations (if time permits)
+
+Sample example of using Hibernate Annotations
+
+                                Spring Framework (version 3.x)
+
+1. Introduction to spring
+
+What is Spring?
+
+Spring Architecture explanation and all it's components
+
+2. Introduction to all modules of spring
+
+Spring Bean Factory
+
+Spring Application Context
+
+Spring DI
+
+Spring AOP
+
+Spring Integration; Spring messaging, Spring JMS
+
+Spring MVC
+
+Spring DAO
+
+3. Setting up spring
+
+Setting up of Spring framework
+
+Download JARs
+
+Configure XML files
+
+4. Dependency Injection
+
+What is Dependency Injection?
+
+How is it implemented using Spring Framework?
+
+Bean Wiring mechanisms in Spring
+
+5. Spring AOP
+
+What is Spring AOP?
+
+Implementation of Spring AOP

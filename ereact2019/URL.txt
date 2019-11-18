@@ -1,0 +1,10 @@
+{{baseURL}}/Unipay/api/Customer/getAddress?custid=090797C00180
+
+{{baseURL}}/Unipay/api/Customer/getCustomerAccounts?custid=   08AT92178
+
+{{baseURL}}/Unipay/api/Customer/getCustomer?custid=1985042070
+
+
+
+
+

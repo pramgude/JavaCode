@@ -1,0 +1,7 @@
+D:\Poonam\WebApplication1\ConsoleApp3\obj\Debug\ConsoleApp3.csprojResolveAssemblyReference.cache
+D:\Poonam\WebApplication1\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CoreCompileInputs.cache
+D:\Poonam\WebApplication1\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
+D:\Poonam\WebApplication1\ConsoleApp3\bin\Debug\ConsoleApp3.exe
+D:\Poonam\WebApplication1\ConsoleApp3\bin\Debug\ConsoleApp3.pdb
+D:\Poonam\WebApplication1\ConsoleApp3\obj\Debug\ConsoleApp3.exe
+D:\Poonam\WebApplication1\ConsoleApp3\obj\Debug\ConsoleApp3.pdb

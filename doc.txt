@@ -1,0 +1,29 @@
+public class Check  
+   {  
+       public bool Compare(int a, int b)  
+       {  
+           if (a == b)  
+           {  
+               return true;  
+           }  
+           else  
+           {  
+               return false;  
+           }  
+       }  
+   }  
+class Program  
+   {  
+       static void Main(string[] args)  
+       {  
+           Check objCheck = new Check();  
+           bool result = objCheck.Compare(1, 4);  
+           Console.Write(result);  
+           Console.ReadKey();             
+       }  
+   }  
+
+
+
+
+984215PRNGLIY
