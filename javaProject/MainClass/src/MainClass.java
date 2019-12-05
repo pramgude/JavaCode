@@ -77,3 +77,20 @@ public class MainClass {
 	}
 
 }
+/* Throwning OwnException from intFn()
+OwnException: 10
+	at MainClass.intFn(MainClass.java:26)
+	at MainClass.main(MainClass.java:47)
+Throwning OwnException from floatFn()
+OwnException: 111.111
+	at MainClass.floatFn(MainClass.java:31)
+	at MainClass.main(MainClass.java:55)
+Throwning OwnException from charFn()
+OwnException: A
+	at MainClass.charFn(MainClass.java:36)
+	at MainClass.main(MainClass.java:63)
+Throwning OwnException from stringFn()
+OwnException: Java World .....
+	at MainClass.stringFn(MainClass.java:41)
+	at MainClass.main(MainClass.java:71)
+ */

@@ -22,3 +22,10 @@ class SubClass extends ParentClass2
 	}
 
 }
+
+/*
+ * output: 
+ * Constructor of ParentClass2 
+ * Constructor of SubClass 
+ * Hello
+ */
